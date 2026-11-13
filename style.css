@@ -34,13 +34,16 @@ header > h1{
     font-size: 14px;
     padding: 2px 10px;
     font-family: Asap, sans-serif;
+    border-radius: 4px;
 }
 #user-label{
+    background: #0da3d6;
     position: absolute;
     top: 30px;
     left: -25px;
 }
 #comp-label{
+    background: orange;
     position: absolute;
     top: 30px;
     right: -30px;
