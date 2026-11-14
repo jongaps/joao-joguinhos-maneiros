@@ -21,29 +21,38 @@ function transformarLegivel(letras) {
 };
 
 function ganhou(jogador, computador) {
+    const palavrinhaPlayer = "Player".fontsize(3).sup().fontcolor("seablue");
+    const palavrinhaComp = "Comp".fontsize(3).sup().fontcolor("orange");
+    const jogadorEscolha_div = document.getElementById(jogador);
     userScore++;
     userScore_span.innerHTML = userScore;
     computerScore_span.innerhtml = computerScore;
-    const palavrinhaPlayer = "Player".fontsize(3).sup().fontcolor("seablue");
-    const palavrinhaComp = "Comp".fontsize(3).sup().fontcolor("orange");
     resultado_p.innerHTML = `${transformarLegivel(jogador)}${palavrinhaPlayer} ganha de ${transformarLegivel(computador)}${palavrinhaComp}, você venceu!`;
+    jogadorEscolha_div.classList.add('brilho-verde');
+    setTimeout(() => jogadorEscolha_div.classList.remove('brilho-verde'), 700);
 };
 
 function perdeu(jogador, computador) {
+    const palavrinhaPlayer = "Player".fontsize(3).sup().fontcolor("seablue");
+    const palavrinhaComp = "Comp".fontsize(3).sup().fontcolor("orange");
+    const jogadorEscolha_div = document.getElementById(jogador);
     computerScore++;
     computerScore_span.innerHTML = computerScore;
     userScore_span.innerhtml = userScore;
-    const palavrinhaPlayer = "Player".fontsize(3).sup().fontcolor("seablue");
-    const palavrinhaComp = "Comp".fontsize(3).sup().fontcolor("orange");
     resultado_p.innerHTML = `${transformarLegivel(jogador)}${palavrinhaPlayer} não ganha de ${transformarLegivel(computador)}${palavrinhaComp}, você perdeu.`;
+    jogadorEscolha_div.classList.add('brilho-vermelho');
+    setTimeout(() => jogadorEscolha_div.classList.remove('brilho-vermelho'), 700);
 };
 
 function empatou(jogador, computador) {
-    userScore_span.innerHTML = userScore;
-    computerScore_span.innerhtml = computerScore;
     const palavrinhaPlayer = "Player".fontsize(3).sup().fontcolor("seablue");
     const palavrinhaComp = "Comp".fontsize(3).sup().fontcolor("orange");
+    const jogadorEscolha_div = document.getElementById(jogador);
+    userScore_span.innerHTML = userScore;
+    computerScore_span.innerhtml = computerScore;
     resultado_p.innerHTML = `${transformarLegivel(jogador)}${palavrinhaPlayer} é igual a ${transformarLegivel(computador)}${palavrinhaComp}, você empatou.`;
+    jogadorEscolha_div.classList.add('brilho-cinza');
+    setTimeout(() => jogadorEscolha_div.classList.remove('brilho-cinza'), 700);
 };
 
 function game(jogadorEscolha) {
@@ -69,14 +78,8 @@ function game(jogadorEscolha) {
 }
 
 function main() {
-    pd_div.addEventListener("click", function() {
-        game("pd")
-    });
-    pp_div.addEventListener("click", function() {
-        game("pp")
-    });
-    ts_div.addEventListener("click", function() {
-        game("ts")
-    });
+    pd_div.addEventListener("click", () => game("pd"));
+    pp_div.addEventListener("click", () => game("pp"));
+    ts_div.addEventListener("click", () => game("ts"));
 }
 main();
